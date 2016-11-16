@@ -45,15 +45,14 @@ void FSteamVRHMD::RenderTexture_RenderThread(FRHICommandListImmediate& RHICmdLis
 
 		if (WindowMirrorMode == 1)
 		{
-			// need to clear when rendering only one eye since the borders won't be touched by the DrawRect below
 			RHICmdList.Clear(true, FLinearColor::Black, false, 0, false, 0, FIntRect());
 
 			RendererModule->DrawRectangle(
 				RHICmdList,
-				ViewportWidth / 4, 0,
-				ViewportWidth / 2, ViewportHeight,
-				0.1f, 0.2f,
-				0.3f, 0.6f,
+				/*ViewportWidth / 4*/0, 0,
+				/*ViewportWidth / 2*/ViewportWidth, ViewportHeight,
+				0.0f, 0.3f,//https://forums.unrealengine.com/showthread.php?117032-Problem-about-monitor-resolution-display-in-vive-vr-mode
+				0.43f, 0.4f,
 				FIntPoint(ViewportWidth, ViewportHeight),
 				FIntPoint(1, 1),
 				*VertexShader,
